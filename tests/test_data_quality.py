@@ -4,7 +4,7 @@ from pandera import Column, DataFrameSchema
 import pytest
 
 # load processed dataset
-df = pd.read_csv("data/processed/delivery_data.csv")
+df = pd.read_csv("data/processed/food_delivery_final.csv")
 
 # -----------------------------
 # Schema Validation
@@ -47,19 +47,19 @@ schema = DataFrameSchema({
         checks=pa.Check.gt(0)
     ),
     "delivery_time_minutes": Column(
-        float,
+        int,
         checks=pa.Check.gt(0)
     ),
     "estimated_delivery_time": Column(
-        float,
+        int,
         checks=pa.Check.gt(0)
     ),
     "traffic_level_score": Column(
-        int,
+        float,
         checks=pa.Check.between(0, 100)
     ),
     "weather_severity_score": Column(
-        int,
+        float,
         checks=pa.Check.between(0, 100)
     ),
     "restaurant_rating": Column(
@@ -102,27 +102,27 @@ schema = DataFrameSchema({
         checks=pa.Check.gt(0)
     ),
     "cancellation_flag": Column(
-        int,
+        bool,
         checks=pa.Check.isin([0, 1])
     ),
     "delayed_delivery_flag": Column(
-        int,
+        bool,
         checks=pa.Check.isin([0, 1])
     ),
     "refund_flag": Column(
-        int,
+        bool,
         checks=pa.Check.isin([0, 1])
     ),
     "promo_code_used": Column(
-        int,
+        bool,
         checks=pa.Check.isin([0, 1])
     ),
     "premium_customer_flag": Column(
-        int,
+        bool,
         checks=pa.Check.isin([0, 1])
     ),
     "festival_or_weekend_flag": Column(
-        int,
+        bool,
         checks=pa.Check.isin([0, 1])
     ),
     "delivery_partner_experience_years": Column(
@@ -142,10 +142,10 @@ schema = DataFrameSchema({
         checks=pa.Check.isin([0, 1])
     ),
     "delivery_delay_gap": Column(
-        float
+        int
     ),
     "is_peak_hour": Column(
-        int,
+        bool,
         checks=pa.Check.isin([0, 1])
     ),
     "cost_per_km": Column(
@@ -157,7 +157,7 @@ schema = DataFrameSchema({
         checks=pa.Check.ge(0)
     ),
     "is_night_order": Column(
-        int,
+        bool,
         checks=pa.Check.isin([0, 1])
     )
 })
