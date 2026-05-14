@@ -5,7 +5,7 @@ from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 package = joblib.load(
-    os.path.join(BASE_DIR, "..", "model", "regression_model_package.pkl")
+    os.path.join(BASE_DIR, "..", "models", "regression_model_package.pkl")
 )
 
 model = package["model"]
@@ -17,7 +17,7 @@ y_test = package["y_test"]
 
 # test that the model predicts a value of the correct shape
 def test_prediction_shape():
-    X_dummy = np.random.rand(1, 6)
+    X_dummy = np.random.rand(1, len(features))
     X_scaled = scaler.transform(X_dummy)
     pred = model.predict(X_scaled)
     assert pred.shape == (1,)
@@ -25,7 +25,7 @@ def test_prediction_shape():
 
 # test that the model predicts a non-negative value
 def test_prediction_positive():
-    X_dummy = np.random.rand(1, 6)
+    X_dummy = np.random.rand(1, len(features))
     X_scaled = scaler.transform(X_dummy)
     pred = model.predict(X_scaled)
     assert pred[0] >= 0
@@ -46,13 +46,16 @@ TOLERANCE = 0.002
 
 
 def test_model_does_not_degrade():
+    X_test_scaled = scaler.transform(X_test)
+    preds = model.predict(X_test_scaled)
 
-    preds = model.predict(X_test)
+    print(y_test[:5])
 
     r2 = r2_score(y_test, preds)
     mae = mean_absolute_error(y_test, preds)
     rmse = np.sqrt(mean_squared_error(y_test, preds))
 
+    print(f"R2: {r2:.4f}, MAE: {mae:.4f}, RMSE: {rmse:.4f}")
     assert (
         r2 >= BASELINE_R2 - TOLERANCE
     ), f"Model degraded! R2={r2:.4f}, baseline={BASELINE_R2}"
