@@ -50,4 +50,4 @@ jobs:
     - name: Check notebooks (optional)
       run: |
         pip install nbconvert
-        jupyter nbconvert --to notebook --execute notebooks/*.ipynb || true
+        jupyter nbconvert --to notebook --execute --inplace notebooks/*.ipynb
