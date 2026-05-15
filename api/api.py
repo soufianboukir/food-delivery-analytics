@@ -5,11 +5,13 @@ import os
 
 app = Flask(__name__)
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # load models
-reg_model = joblib.load(os.path.join(BASE_DIR, "../models/regression_model_package.pkl"))
-clf_model = joblib.load(os.path.join(BASE_DIR, "../models/classification_model_package.pkl"))
+BASE_DIR = os.path.dirname(__file__)
+MODEL_DIR = os.environ.get("MODEL_DIR", os.path.join(BASE_DIR, "../models"))
+
+reg_model = joblib.load(os.path.join(MODEL_DIR, "regression_model_package.pkl"))
+clf_model = joblib.load(os.path.join(MODEL_DIR, "classification_model_package.pkl"))
 
 regressor = reg_model["model"]
 reg_features = reg_model["features"]

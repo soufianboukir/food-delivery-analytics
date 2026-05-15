@@ -1,3 +1,6 @@
 flask
 numpy
 joblib
+scikit-learn
+pandas
+pyarrow

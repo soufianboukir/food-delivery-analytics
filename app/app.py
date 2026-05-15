@@ -1,7 +1,7 @@
 import streamlit as st
 
 page1 = st.Page(
-    "pages/settings.py",
+    "pages/01_overview.py",
     title="Overview",
     icon="📊"
 )

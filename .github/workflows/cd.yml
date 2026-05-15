@@ -1,0 +1,52 @@
+name: Deploy API to AWS EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Login to Docker Hub
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # 3. Build Docker image
+      - name: Build Docker image
+        run: |
+          docker build -t sofyan01/delivery-api:latest ./api
+
+      # 4. Push to Docker Hub
+      - name: Push Docker image
+        run: |
+          docker push sofyan01/delivery-api:latest
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to AWS EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ubuntu
+          key: ${{ secrets.AWS_SSH_KEY }}
+          script: |
+            docker pull sofyan01/delivery-api:latest
+            docker stop delivery-api || true
+            docker rm delivery-api || true
+            docker run -d \
+              -p 5000:5000 \
+              --name delivery-api \
+              sofyan01/delivery-api:latest
