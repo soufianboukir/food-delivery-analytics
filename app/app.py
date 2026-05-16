@@ -18,12 +18,18 @@ page3 = st.Page(
     icon="👥"
 )
 
+page4 = st.Page(
+    "pages/04_revenue_discounts.py",
+    title="Revenue & Discounts Analysis",
+    icon="💰"
+)
+
 page5 = st.Page(
     "pages/predictions.py",
     title="Delivery ML System",
     icon="🔎"
 )
 
-pg = st.navigation([page1, page2, page3, page5])
+pg = st.navigation([page1, page2, page3, page4, page5])
 
 pg.run()

@@ -131,7 +131,7 @@ dff = df[
 # =========================================================
 # HEADER
 # =========================================================
-st.title("Customer Insights")
+st.markdown("## Customer Insights")
 
 st.caption(
     f"{len(dff):,} Orders | "
