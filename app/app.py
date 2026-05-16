@@ -8,8 +8,8 @@ page1 = st.Page(
 
 page2 = st.Page(
     "pages/02_delivery_performance.py",
-    title="Overview",
-    icon="📊"
+    title="Delivery Performance",
+    icon="📈"
 )
 
 page5 = st.Page(

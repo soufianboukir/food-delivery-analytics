@@ -6,9 +6,9 @@ from pathlib import Path
 
 # ── CONFIG ─────────────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="DeliverIQ · Overview",
+    page_title="Overview",
     layout="wide",
-    page_icon="🚀"
+    page_icon="📊"
 )
 
 # Detect theme (light / dark)
@@ -60,9 +60,6 @@ df = load_data()
 
 # ── SIDEBAR ────────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.image("https://img.icons8.com/fluency/48/delivery.png", width=40)
-    st.markdown("### DeliverIQ")
-
     city_sel = st.multiselect("City tier", [1, 2, 3], default=[1, 2, 3])
     premium_sel = st.radio("Customer type", ["All", "Premium", "Standard"])
 
@@ -83,7 +80,7 @@ def delta(col):
     return f"{((b - a) / a * 100):+.1f}%" if a else "0%"
 
 # ── HEADER ─────────────────────────────────────────────────────────────────────
-st.markdown("## 📦 Operations Overview")
+st.markdown("## Operations Overview")
 st.caption(f"Orders: {len(dff):,} | Cities: {city_sel} | {premium_sel}")
 st.divider()
 
