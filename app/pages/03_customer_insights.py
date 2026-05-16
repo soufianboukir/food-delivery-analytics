@@ -20,14 +20,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# THEME
-try:
-    is_dark = st.context.theme.base == "dark"
-except:
-    is_dark = st.get_option("theme.base") == "dark"
-
-PLOT_THEME = "plotly_dark" if is_dark else "plotly_white"
-
 PAL = {
     "primary": "#F97316",
     "navy": "#0F2744",
@@ -39,9 +31,7 @@ PAL = {
 
 # HELPERS
 def plot_layout(fig, height=320):
-    fig.update_layout(
-        template=PLOT_THEME, height=height, margin=dict(l=0, r=0, t=35, b=0)
-    )
+    fig.update_layout(height=height, margin=dict(l=0, r=0, t=35, b=0))
     st.plotly_chart(fig, use_container_width=True)
 
 

@@ -237,23 +237,12 @@ with r2c1:
             [0.5, "#F97316"],
             [1, PALETTE["danger"]],
         ],
-        labels=dict(
-            x="Hour of Day",
-            y="Day",
-            color="Delay %"
-        ),
+        labels=dict(x="Hour of Day", y="Day", color="Delay %"),
     )
 
     fig.update_traces(textfont_size=8)
 
-    chart(
-        fig,
-        height=320,
-        coloraxis_colorbar=dict(
-            title="Delay %",
-            thickness=12
-        )
-    )
+    chart(fig, height=320, coloraxis_colorbar=dict(title="Delay %", thickness=12))
 
 with r2c2:
     title("Distance vs Delivery Time  (with regression)")

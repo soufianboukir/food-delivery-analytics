@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
 from pathlib import Path
 
 st.set_page_config(page_title="Overview", layout="wide", page_icon="📊")
@@ -147,7 +146,7 @@ with c2:
 
     st.plotly_chart(fig2, use_container_width=True)
 
-# ── PEAK HOURS HEATMAP 
+# ── PEAK HOURS HEATMAP
 with c3:
     st.markdown('<p class="section-title">Peak Hours</p>', unsafe_allow_html=True)
     hour_day = (
