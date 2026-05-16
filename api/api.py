@@ -21,6 +21,7 @@ classifier = clf_model["model"]
 clf_features = clf_model["features"]
 clf_scaler = clf_model["scaler"]
 
+
 # -----------------------------
 # REGRESSION ENDPOINT
 # -----------------------------
@@ -34,9 +35,8 @@ def predict_delivery():
 
     pred = regressor.predict(x_scaled)[0]
 
-    return jsonify({
-        "delivery_time_minutes": float(pred)
-    })
+    return jsonify({"delivery_time_minutes": float(pred)})
+
 
 # -----------------------------
 # CLASSIFICATION ENDPOINT
@@ -53,10 +53,8 @@ def predict_cancellation():
     pred = classifier.predict(X_scaled)[0]
     prob = classifier.predict_proba(X_scaled)[0][1]
 
-    return jsonify({
-        "cancellation_prediction": int(pred),
-        "probability": float(prob)
-    })
+    return jsonify({"cancellation_prediction": int(pred), "probability": float(prob)})
+
 
 # -----------------------------
 if __name__ == "__main__":
