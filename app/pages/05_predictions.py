@@ -1,6 +1,3 @@
-
-
-
 # THIS CODE IS COMMENTED OUT TO AVOID UNNECESSARY API CALLS DURING PRODUCTION (THE AWS INSTANCE IS TURNED OFF).
 
 # import streamlit as st
@@ -162,11 +159,7 @@ import streamlit as st
 import joblib
 import numpy as np
 
-st.set_page_config(
-    page_title="Delivery ML System",
-    layout="wide",
-    page_icon="🔎"
-)
+st.set_page_config(page_title="Delivery ML System", layout="wide", page_icon="🔎")
 
 st.markdown("## Delivery ML System")
 
@@ -201,25 +194,13 @@ with col1:
     st.markdown("### Delivery Time Prediction")
 
     distance = st.number_input(
-        "Distance (km)",
-        min_value=0.0,
-        value=5.0,
-        step=0.1,
-        key="reg_distance"
+        "Distance (km)", min_value=0.0, value=5.0, step=0.1, key="reg_distance"
     )
 
-    prep = st.number_input(
-        "Preparation Time (minutes)",
-        value=15,
-        key="reg_prep"
-    )
+    prep = st.number_input("Preparation Time (minutes)", value=15, key="reg_prep")
 
     traffic = st.number_input(
-        "Traffic Score",
-        min_value=0.0,
-        max_value=10.0,
-        value=5.0,
-        key="reg_traffic"
+        "Traffic Score", min_value=0.0, max_value=10.0, value=5.0, key="reg_traffic"
     )
 
     weather = st.number_input(
@@ -227,7 +208,7 @@ with col1:
         min_value=0.0,
         max_value=10.0,
         value=5.0,
-        key="reg_weather"
+        key="reg_weather",
     )
 
     eff = st.number_input(
@@ -235,14 +216,11 @@ with col1:
         min_value=0.0,
         max_value=100.0,
         value=80.0,
-        key="reg_eff"
+        key="reg_eff",
     )
 
     exp = st.number_input(
-        "Delivery Partner Experience (years)",
-        min_value=0.0,
-        value=3.0,
-        key="reg_exp"
+        "Delivery Partner Experience (years)", min_value=0.0, value=3.0, key="reg_exp"
     )
 
     if st.button("Predict Delivery Time", key="reg_button"):
@@ -262,9 +240,7 @@ with col1:
 
         prediction = regressor.predict(X_scaled)[0]
 
-        st.success(
-            f"Estimated Delivery Time: {prediction:.2f} minutes"
-        )
+        st.success(f"Estimated Delivery Time: {prediction:.2f} minutes")
 
 # ==================================================
 # CLASSIFICATION
@@ -274,11 +250,7 @@ with col2:
     st.markdown("### Cancellation Prediction")
 
     traffic2 = st.number_input(
-        "Traffic Score",
-        min_value=0.0,
-        max_value=10.0,
-        value=5.0,
-        key="clf_traffic"
+        "Traffic Score", min_value=0.0, max_value=10.0, value=5.0, key="clf_traffic"
     )
 
     weather2 = st.number_input(
@@ -286,13 +258,11 @@ with col2:
         min_value=0.0,
         max_value=10.0,
         value=5.0,
-        key="clf_weather"
+        key="clf_weather",
     )
 
     est = st.number_input(
-        "Estimated Delivery Time (minutes)",
-        value=45.0,
-        key="clf_est"
+        "Estimated Delivery Time (minutes)", value=45.0, key="clf_est"
     )
 
     eff2 = st.number_input(
@@ -300,28 +270,17 @@ with col2:
         min_value=0.0,
         max_value=100.0,
         value=80.0,
-        key="clf_eff"
+        key="clf_eff",
     )
 
-    peak = st.checkbox(
-        "Peak Hour",
-        key="clf_peak"
-    )
+    peak = st.checkbox("Peak Hour", key="clf_peak")
 
     fee = st.number_input(
-        "Delivery Fee",
-        min_value=0.0,
-        value=10.0,
-        step=0.5,
-        key="clf_fee"
+        "Delivery Fee", min_value=0.0, value=10.0, step=0.5, key="clf_fee"
     )
 
     discount = st.number_input(
-        "Discount Amount",
-        min_value=0.0,
-        value=0.0,
-        step=1.0,
-        key="clf_discount"
+        "Discount Amount", min_value=0.0, value=0.0, step=1.0, key="clf_discount"
     )
 
     loyalty = st.number_input(
@@ -329,7 +288,7 @@ with col2:
         min_value=0,
         max_value=100,
         value=50,
-        key="clf_loyalty"
+        key="clf_loyalty",
     )
 
     rating = st.number_input(
@@ -338,7 +297,7 @@ with col2:
         max_value=5.0,
         value=4.0,
         step=0.1,
-        key="clf_rating"
+        key="clf_rating",
     )
 
     if st.button("Predict Cancellation", key="clf_button"):
