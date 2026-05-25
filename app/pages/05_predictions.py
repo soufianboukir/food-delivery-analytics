@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_URL = "http://localhost:5000"
+API_URL = "http://13.53.39.236:5000"
 
 st.set_page_config(page_title="Delivery ML System", layout="wide", page_icon="🔎")
 
