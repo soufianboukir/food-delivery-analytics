@@ -5,7 +5,7 @@ import plotly.express as px
 from pathlib import Path
 import numpy as np
 
-st.set_page_config(page_title="Revenue & Discounts", layout="wide")
+st.set_page_config(page_title="Revenue & Discounts", layout="wide", page_icon="💰")
 
 st.markdown("## Revenue & Discounts Analysis")
 
