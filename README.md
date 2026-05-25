@@ -4,9 +4,10 @@ An end-to-end data science and business intelligence system built on 15,000 food
 
 ## 📄 Report
 - Full analysis report: [PDF](https://github.com/soufianboukir/food-delivery-analytics/blob/main/reports/food-delivery-intelligence-system.pdf)
-- Streamlit dashboard: [Live App](https://your-dashboard-url.streamlit.app/)
+- Streamlit dashboard: [Live App](https://food-delivery-intelligence-system.streamlit.app/)
 
----
+<img width="1773" height="948" alt="Screenshot from 2026-05-25 20-01-54" src="https://github.com/user-attachments/assets/25110000-9abf-4526-9253-66ecf4df78f9" />
+
 
 ## Overview
 
